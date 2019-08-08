@@ -8,7 +8,6 @@ variable "bootstrap_file" {
 
 variable "instance_image_ocid" {
   type = "map"
-
   default = {
     // Oracle-provided image "Oracle-Linux-7.x"
     // See https://docs.us-phoenix-1.oraclecloud.com/images/

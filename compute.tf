@@ -10,4 +10,9 @@ resource "oci_core_instance" "bastion" {
     user_data = "${base64encode(file(var.bootstrap_file))}"
 #    assign_public_ip = "false"
   }
+
+  source_details {
+    source_type = "image"
+    source_id = "${var.instance_image_ocid[var.region]}"
+  }
 }
