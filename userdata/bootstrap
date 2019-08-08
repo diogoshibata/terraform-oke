@@ -9,7 +9,11 @@ sudo systemctl enable ocid.service
 sudo systemctl start ocid.service
 sudo systemctl status ocid.service
 
+sleep 20
+
 sudo git clone https://github.com/diogoshibata/terraform-oke.git
+
+sleep 20
 
 sudo mkdir -p ~/.oci
 sudo cp terraform-oke/userdata/oci_api_key.pem ~/.oci/oci_api_key.pem
