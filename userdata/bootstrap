@@ -1,16 +1,19 @@
 #!/bin/bash
-echo '########## yum update all ###############';
-sudo yum update -y;
+echo '########## yum update all ###############'
+sudo yum update -y
 
-echo '########## install oci-cli and kubectl ##############';
-sudo yum install python-oci-cli kubectl git -y;
+echo '########## install oci-cli and kubectl ##############'
+sudo yum install python-oci-cli kubectl git -y
 
-sudo systemctl enable ocid.service;
-sudo systemctl start ocid.service;
-sudo systemctl status ocid.service;
+sudo systemctl enable ocid.service
+sudo systemctl start ocid.service
+sudo systemctl status ocid.service
 
-git clone https://github.com/diogoshibata/terraform-oke.git;
+sudo git clone https://github.com/diogoshibata/terraform-oke.git
 
-mkdir -p ~/.oci;
-cp terraform-oke/userdata/oci_api_key.pem ~/.oci/oci_api_key.pem;
-cp terraform-oke/userdata/config ~/.oci/config;
+sudo mkdir -p ~/.oci
+sudo cp terraform-oke/userdata/oci_api_key.pem ~/.oci/oci_api_key.pem
+sudo cp terraform-oke/userdata/config ~/.oci/config
+
+sudo oci setup repair-file-permissions --file ~/.oci/oci_api_key.pem
+sudo oci setup repair-file-permissions --file ~/.oci/config
