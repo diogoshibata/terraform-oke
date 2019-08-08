@@ -13,5 +13,5 @@ systemctl status ocid.service
 git clone https://github.com/diogoshibata/terraform-oke.git
 
 mkdir -p ~/.oci
-cp userdata/oci_api_key.pem ~/.oci/oci_api_key.pem
-cp userdata/config ~/.oci/config
+cp terraform-oke/userdata/oci_api_key.pem ~/.oci/oci_api_key.pem
+cp terraform-oke/userdata/config ~/.oci/config
