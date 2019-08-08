@@ -10,44 +10,4 @@ resource "oci_core_instance" "bastion" {
     user_data = "${base64encode(file(var.bootstrap_file))}"
 #    assign_public_ip = "false"
   }
-
-  source_details {
-    source_type = "image"
-    source_id = "${var.instance_image_ocid[var.region]}"
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "sudo su",
-      "mkdir -p ~/.oci",
-      "git clone ",
-    ]
-    
-    connection {
-      type = "ssh"
-      user = "opc"
-      private_key = "${file(var.ssh_private_key)}"
-    }
-  }
-  
-/*  provisioner "file" {
-    source = "./userdata/config"
-    destination = "~/.oci/config"
-    
-    connection {
-      type = "ssh"
-      user = "opc"
-      private_key = "${file(var.ssh_private_key)}"
-    }
-  }
-  
-  provisioner "file" {
-    source = "./userdata/oci_api_key.pem"
-    destination = "~/.oci/oci_api_key.pem"
-    
-    connection {
-      type = "ssh"
-      user = "opc"
-      private_key = "${file(var.ssh_private_key)}"
-    }
-  }*/
 }

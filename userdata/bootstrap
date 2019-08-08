@@ -9,3 +9,9 @@ yum install python-oci-cli kubectl git -y
 systemctl enable ocid.service
 systemctl start ocid.service
 systemctl status ocid.service
+
+git clone https://github.com/diogoshibata/terraform-oke.git
+
+mkdir -p ~/.oci
+cp userdata/oci_api_key.pem ~/.oci/oci_api_key.pem
+cp userdata/config ~/.oci/config
