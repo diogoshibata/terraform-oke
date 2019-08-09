@@ -78,7 +78,7 @@ Download Client Credentials (Wallet)<br>
 Access:<br>
 Menu --> Resource Manager --> Stacks<br>
 <b>Create Stack</b><br>
-Upload the file "oke.zip" (or drag and drop)
+Upload the file "bastion.zip" (or drag and drop)
 	Name: bastion-stack<br>
 	Description: Deploy a bastion host to manage Kubernetes<br>
 		<b>Next</b><br>
