@@ -65,15 +65,15 @@ Update your file "userdata/config"
 Get the "bastion_ip" data from the Job Details log
 
 Access the "vm-bastion":<br>
-  Linux/MacOS: ssh opc@"ip_address" -i 'key path'/oci_api_key.pem<br>
-  Windows PowerShell: ssh opc@"ip_address" -i 'key path'/oci_api_key.pem -L 8001:localhost:8001<br>
+  Linux/MacOS: ssh opc@'<i>ip_address</i>' -i '<i>key path</i>'/oci_api_key.pem<br>
+  Windows PowerShell: ssh opc@'<i>ip_address</i>' -i '<i>key path</i>'/oci_api_key.pem -L 8001:localhost:8001<br>
   Windows PuTTY:<br>
     Session<br>
-      Host Name (or IP Address): "ip_address"<br>
+      Host Name (or IP Address): '<i>ip_address</i>'<br>
     Connection --> Data<br>
       Auto-login username: opc<br>
     Connection --> Data --> SSH --> Auth<br>
-      Private key file for authentication: 'key path'/oci_api_key.ppk<br>
+      Private key file for authentication: '<i>key path</i>'/oci_api_key.ppk<br>
     Connection --> Data --> SSH --> Tunnels<br>
       Source port: 8001<br>
       Destination: localhost:8001<br>
@@ -84,7 +84,7 @@ Access the "vm-bastion":<br>
           <b>Open</b><br>
 
 Command:<br>
-  git clone "your git repository"<br>
+  git clone '<i>your git repository</i>'<br>
   sudo mkdir -p ~/.oci<br>
   sudo cp terraform-oke/userdata/oci_api_key.pem ~/.oci/oci_api_key.pem<br>
   sudo cp terraform-oke/userdata/config ~/.oci/config<br>
