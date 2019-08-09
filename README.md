@@ -71,6 +71,9 @@ Access:<br>
 
 <u>Get the "bastion_ip" data from the Job Details log</u>
 
+
+<h3>Bastion VM</h3>
+
 Access the "vm-bastion":<br>
 	Linux/MacOS: ssh opc@'<i>ip_address</i>' -i '<i>key path</i>'/oci_api_key.pem<br>
 	Windows PowerShell: ssh opc@'<i>ip_address</i>' -i '<i>key path</i>'/oci_api_key.pem -L 8001:localhost:8001<br>
@@ -98,3 +101,4 @@ Commands:<br>
 	cp terraform-oke/userdata/config ~/.oci/config<br>
 	oci setup repair-file-permissions --file ~/.oci/oci_api_key.pem<br>
 	oci setup repair-file-permissions --file ~/.oci/config<br>
+	<u>Use Access Kubeconfig information</u>
