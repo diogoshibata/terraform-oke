@@ -65,11 +65,11 @@ Update your file "userdata/config"
 Get the "bastion_ip" data from the Job Details log
 
 Access the "vm-bastion":<br>
-  Linux/MacOS: ssh opc@<ip_address> -i oci_api_key.pem<br>
-  Windows PowerShell: ssh opc@<ip_address> -i oci_api_key.pem -L 8001:localhost:8001<br>
+  Linux/MacOS: ssh opc@"ip_address" -i oci_api_key.pem<br>
+  Windows PowerShell: ssh opc@"ip_address" -i oci_api_key.pem -L 8001:localhost:8001<br>
   Windows PuTTY:<br>
     Session<br>
-      Host Name (or IP Address): <ip_address><br>
+      Host Name (or IP Address): "ip_address"<br>
     Connection --> Data<br>
       Auto-login username: opc<br>
     Connection --> Data --> SSH --> Auth<br>
@@ -84,5 +84,5 @@ Access the "vm-bastion":<br>
           <b>Open</b><br>
 
 Command:
-  git clone <your git repository><br>
+  git clone "your git repository"<br>
   bash terraform-oke/script.sh<br>
