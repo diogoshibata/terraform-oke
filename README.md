@@ -1,5 +1,7 @@
 # terraform-oke
-<h3>Cloud Console</h3>
+<h4>Cloud Console</h4>
+
+<h3>Get the needed information of your account and create the neede logical resources</h3>
 
 Access:<br>
 Menu --> Identity --> Users --> Your Admin User<br>
@@ -30,6 +32,9 @@ Change the compartment to (root)<br>
 		Statement: allow service OKE to manage all-resources in tenancy<br>
 		<b>Create</b>
 
+
+<h3>Create the Oracle Container Engine for Kubernetes</h3>
+
 Access:<br>
 Menu --> Developer Services --> Container Clusters (OKE)<br>
 Modify the compartment to "OKE-Workshop"<br>
@@ -40,6 +45,9 @@ Modify the compartment to "OKE-Workshop"<br>
 	Shape: VM.Standard2.1<br>
 	Quantity Per Subnet: 1<br>
 		<b>Create</b>
+
+
+<h3>Create the Bastion VM from Resource Manager</h3>
 
 Access:<br>
 Menu --> Resource Manager --> Stacks<br>
@@ -61,6 +69,11 @@ Terraform Actions --> Apply<br>
 	Use default configuration<br>
 		<b>Apply</b>
 
+<u>Get the "bastion_ip" data from the Job Details log</u>
+
+
+<h3>Configure the files to access Oracle Cloud from Bastion VM</h3>
+
 Access:<br>
 	Menu --> Developer Services --> Container Clusters (OKE)<br>
 	<b>cluster-workshop</b><br>
@@ -69,10 +82,8 @@ Access:<br>
 
 <u>Update your file "userdata/config"</u>
 
-<u>Get the "bastion_ip" data from the Job Details log</u>
 
-
-<h3>Bastion VM</h3>
+<h4>Bastion VM</h4>
 
 Access the "vm-bastion":<br>
 	Linux/MacOS: ssh opc@'<i>ip_address</i>' -i '<i>key path</i>'/oci_api_key.pem<br>
