@@ -124,7 +124,7 @@ Access the "vm-bastion":<br>
 		Connection --> Data --> SSH --> Tunnels<br>
 			Source port: 8001<br>
 			Destination: localhost:8001<br>
-				<b>Add</b>
+				<b>Add</b><br>
 		Session<br>
 			Saved Sessions: OKE Workshop<br>
 				<b>Save</b><br>
@@ -146,7 +146,3 @@ Commands:<br>
 	cat ~/.kube/config | grep token<br>
 	//initiate the proxy to connect to Kubernetes dashboard<br>
 	kubectl proxy<br>
-	
-	
-	
-	
