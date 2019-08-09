@@ -112,14 +112,14 @@ Commands:<br>
 	cp terraform-oke/userdata/config ~/.oci/config<br>
 	oci setup repair-file-permissions --file ~/.oci/oci_api_key.pem<br>
 	oci setup repair-file-permissions --file ~/.oci/config<br>
-	<u>Use Access Kubeconfig information</u>
-	kubectl get nodes
-	kubectl get pods
-	kubectl get services
-	//get the token needed to connect to Kubernetes dashboard
-	cat ~/.kube/config | grep token
-	//initiate the proxy to connect to Kubernetes dashboard
-	kubectl proxy
+	<u>Use Access Kubeconfig information</u><br>
+	kubectl get nodes<br>
+	kubectl get pods<br>
+	kubectl get services<br>
+	//get the token needed to connect to Kubernetes dashboard<br>
+	cat ~/.kube/config | grep token<br>
+	//initiate the proxy to connect to Kubernetes dashboard<br>
+	kubectl proxy<br>
 	
 	
 	
