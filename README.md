@@ -66,8 +66,11 @@ Modify the compartment to "OKE-Workshop"<br>
 		<b>Create Autonomous Database</b>
 
 <b>DB Connection</b><br>
-Download Client Credentials (Wallet)
-	<b>DB Connection</b><br>
+Download Client Credentials (Wallet)<br>
+	<b>Download</b><br>
+		Password: OracleCloud#123<br>
+		Confirm password: OracleCloud#123<br>
+		<b>Download</b><br>
 
 
 <h3>Create the Bastion VM with Resource Manager</h3>
