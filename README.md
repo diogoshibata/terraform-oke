@@ -47,6 +47,20 @@ Modify the compartment to "OKE-Workshop"<br>
 		<b>Create</b>
 
 
+<h3>Create the Oracle Autonomous Database </h3>
+
+Access:<br>
+Menu --> Developer Services --> Container Clusters (OKE)<br>
+Modify the compartment to "OKE-Workshop"<br>
+<b>Create Cluster</b><br>
+	Name: cluster-workshop<br>
+	Kubernetes Version: v1.13.5<br>
+	Quick Create<br>
+	Shape: VM.Standard2.1<br>
+	Quantity Per Subnet: 1<br>
+		<b>Create</b>
+
+
 <h3>Create the Bastion VM from Resource Manager</h3>
 
 Access:<br>
