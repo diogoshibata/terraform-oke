@@ -83,6 +83,6 @@ Access the "vm-bastion":<br>
         <b>Save</b><br>
           <b>Open</b><br>
 
-Command:
+Command:<br>
   git clone "your git repository"<br>
   bash terraform-oke/script.sh<br>
