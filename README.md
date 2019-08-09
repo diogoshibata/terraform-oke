@@ -12,11 +12,11 @@ Menu --> Identity --> Compartments<br>
   Name: OKE-Workshop<br>
   Description: Workshop Compartment<br>
   Parent Compartment: (root)<br>
-  <b>Create</b>
+    <b>Create</b>
 
 Access:<br>
 Menu --> Administration --> Tenancy Details<br>
-Get yout Tenancy OCID<br>
+Get yout Tenancy OCID
 
 Access:<br>
 Menu --> Identity --> Policies<br>
@@ -27,7 +27,7 @@ Change the compartment to (root)<br>
   Policy Versioning: Keep Policy current<br>
   Policy Statements<br>
     Statement: allow service OKE to manage all-resources in tenancy<br>
-  <b>Create</b><br>
+    <b>Create</b>
 
 Access:<br>
 Menu --> Developer Services --> Container Clusters (OKE)<br>
@@ -38,6 +38,28 @@ Modify the compartment to "OKE-Workshop"<br>
   Quick Create<br>
   Shape: VM.Standard2.1<br>
   Quantity Per Subnet: 1<br>
-  <b>Create</b><br>
+    <b>Create</b>
+
+Access:<br>
+Menu --> Resource Manager --> Stacks<br>
+<b>Create Stack</b><br>
+  Upload the file "oke.zip" (or drag and drop)
+  Name: bastion-stack<br>
+  Description: Deploy a bastion host to manage Kubernetes<br>
+    <b>Next</b><br>
+  Use default configuration<br>
+    <b>Next</b><br>
+  Verify if the fields are filled<br>
+    <b>Next</b>
+ 
+Terraform Actions --> Plan<br>
+  Use default configuration<br>
+    <b>Plan</b>
+
+Terraform Actions --> Plan<br>
+  Use default configuration<br>
+    <b>Apply</b>
+
+
 
 Update your file "userdata/config"<br>
