@@ -85,4 +85,8 @@ Access the "vm-bastion":<br>
 
 Command:<br>
   git clone "your git repository"<br>
-  sudo bash terraform-oke/script.sh
+  sudo mkdir -p ~/.oci<br>
+  sudo cp terraform-oke/userdata/oci_api_key.pem ~/.oci/oci_api_key.pem<br>
+  sudo cp terraform-oke/userdata/config ~/.oci/config<br>
+  sudo oci setup repair-file-permissions --file ~/.oci/oci_api_key.pem<br>
+  sudo oci setup repair-file-permissions --file ~/.oci/config<br>
