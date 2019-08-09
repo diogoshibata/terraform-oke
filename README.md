@@ -1,5 +1,5 @@
 # terraform-oke
-<h4>Cloud Console</h4>
+<h2>Cloud Console</h2>
 
 <h3>Get the needed information of your account and create the neede logical resources</h3>
 
@@ -83,7 +83,7 @@ Access:<br>
 <u>Update your file "userdata/config"</u>
 
 
-<h4>Bastion VM</h4>
+<h2>Bastion VM</h2>
 
 Access the "vm-bastion":<br>
 	Linux/MacOS: ssh opc@'<i>ip_address</i>' -i '<i>key path</i>'/oci_api_key.pem<br>
@@ -113,3 +113,14 @@ Commands:<br>
 	oci setup repair-file-permissions --file ~/.oci/oci_api_key.pem<br>
 	oci setup repair-file-permissions --file ~/.oci/config<br>
 	<u>Use Access Kubeconfig information</u>
+	kubectl get nodes
+	kubectl get pods
+	kubectl get services
+	//get the token needed to connect to Kubernetes dashboard
+	cat ~/.kube/config | grep token
+	//initiate the proxy to connect to Kubernetes dashboard
+	kubectl proxy
+	
+	
+	
+	
