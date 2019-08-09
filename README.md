@@ -65,6 +65,10 @@ Modify the compartment to "OKE-Workshop"<br>
 	Choose a license type: Bring Your Own Licence<br>
 		<b>Create Autonomous Database</b>
 
+<b>DB Connection</b><br>
+Download Client Credentials (Wallet)
+	<b>DB Connection</b><br>
+
 
 <h3>Create the Bastion VM with Resource Manager</h3>
 
@@ -80,11 +84,11 @@ Upload the file "oke.zip" (or drag and drop)
 	Verify if the fields are filled<br>
 		<b>Next</b>
  
-Terraform Actions --> Plan<br>
+<b>Terraform Actions --> Plan</b><br>
 	Use default configuration<br>
 		<b>Plan</b>
 
-Terraform Actions --> Apply<br>
+<b>Terraform Actions --> Apply</b><br>
 	Use default configuration<br>
 		<b>Apply</b>
 
