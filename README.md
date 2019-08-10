@@ -1,6 +1,18 @@
 # terraform-oke
 <h2>Cloud Console</h2>
 
+<h3>Create the Oracle Developer Cloud Service</h3>
+
+Access:<br>
+Menu --> My Services Dashboard<br>
+Menu --> Developer<br>
+<b>Create Instance</b><br>
+    Instance Name: DevCS<br>
+    Region: us-ashburn-1<br>
+    <b>Next</b><br>
+    <b>Create</b>
+
+
 <h3>Get the needed information of your account and create the neede logical resources</h3>
 
 Access:<br>
@@ -28,7 +40,8 @@ Menu --> Identity --> Compartments<br>
 Access:<br>
 Menu --> Administration --> Tenancy Details<br>
 <u>Get your Tenancy OCID</u>
-<<u>Get your Object Storage Namespace</u>
+<u>Get your Home Region</u>
+<u>Get your Object Storage Namespace</u>
 
 Access:<br>
 Menu --> Identity --> Policies<br>
@@ -42,7 +55,7 @@ Change the compartment to (root)<br>
     <b>Create</b>
 
 
-<h3>Create the Oracle Container Engine for Kubernetes</h3>
+<h3>Create the Oracle Container Engine for Kubernetes cluster</h3>
 
 Access:<br>
 Menu --> Developer Services --> Container Clusters (OKE)<br>
@@ -78,7 +91,7 @@ Download Client Credentials (Wallet)<br>
 	<b>Download</b><br>
 		Password: OracleCloud#123<br>
 		Confirm password: OracleCloud#123<br>
-		<b>Download</b><br>
+		<b>Download</b>
 
 <u>Get the Autonomous Database OCID</u>
 
@@ -119,6 +132,18 @@ Access:<br>
 	<u>Copy and paste the commands 1. and 2. and set your KUBECONFIG environment variable.</u>
 
 <u>Update your file "terraform/userdata/config"</u>
+
+
+<h3>Configure Oracle Developer Cloud Service</h3>
+
+Access:<br>
+    Menu --> My Services Dashboard<br>
+    Menu --> Developer<br>
+    <b>Right menu</b><br>
+    <b>Access Service Instance</b>
+
+Fill the OCI Credentials
+
 
 
 <h2>Bastion VM</h2>
@@ -162,18 +187,12 @@ Commands:<br>
 	//get the token needed to connect to Kubernetes dashboard<br>
 	cat ~/.kube/config | grep token<br>
 	//initiate the proxy to connect to Kubernetes dashboard<br>
-	kubectl proxy
-    
-    <i>Ctrl + c</i>
-    
+	kubectl proxy<br><br>
+    <i>Ctrl + c</i><br><br>
     chmod 400 atpkey<br>
     scp -o 'StrictHostKeyChecking no' -i atpkey opc@130.61.120.69:/home/opc/jle/instantclient-basic-linux.x64-12.1.0.2.0.zip instantclient-basic-linux.x64-12.1.0.2.0.zip<br>
-    ls -al
-    
+    ls -al<br><br>
     docker login '<i>your region code</i>'.ocir.io<br>
         Username: '<i>your Object Storage Namespace</i>'/'<i>your complete Username</i>'<br>
         Password: '<i>your Auth Token</i>'<br>
-    
-    
-    
     
