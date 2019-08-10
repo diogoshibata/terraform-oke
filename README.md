@@ -88,7 +88,7 @@ Download Client Credentials (Wallet)<br>
 Access:<br>
 Menu --> Resource Manager --> Stacks<br>
 <b>Create Stack</b><br>
-Upload the file "bastion.zip" (or drag and drop)
+Upload the file "terraform/bastion.zip" (or drag and drop)
 	Name: bastion-stack<br>
 	Description: Deploy a bastion host to manage Kubernetes<br>
 	<b>Next</b>
@@ -118,7 +118,7 @@ Access:<br>
 	<b>Access Kubeconfig</b><br>
 	<u>Copy and paste the commands 1. and 2. and set your KUBECONFIG environment variable.</u>
 
-<u>Update your file "userdata/config"</u>
+<u>Update your file "terraform/userdata/config"</u>
 
 
 <h2>Bastion VM</h2>
@@ -147,11 +147,13 @@ Commands:<br>
 	git clone '<i>your git repository</i>'<br>
 	mkdir -p ~/.oci<br>
 	cp terraform-oke/ssh-keys/oci_api_key.pem ~/.oci/oci_api_key.pem<br>
-	cp terraform-oke/userdata/config ~/.oci/config<br>
+	cp terraform-oke/terraform/userdata/config ~/.oci/config<br>
 	oci setup repair-file-permissions --file ~/.oci/oci_api_key.pem<br>
 	oci setup repair-file-permissions --file ~/.oci/config<br>
     cd terraform-oke<br>
     oci db autonomous-database generate-wallet --autonomous-database-id '<i>your ATP OCID'</i> --file Wallet_atp.zip --password OracleCloud#123 --region '<i>your ATP Region</i>'<br>
+    mkdir Wallet_atp<br>
+    unzip Wallet_atp.zip -d ./Wallet_atp<br>
 	<u>Use Access Kubeconfig information</u><br>
     kubectl version<br>
 	kubectl get nodes<br>
