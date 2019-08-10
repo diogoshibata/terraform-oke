@@ -142,8 +142,11 @@ Access:<br>
     <b>Right menu</b><br>
     <b>Access Service Instance</b>
 
-Fill the OCI Credentials
-
+Configure OCI Account<br>
+    Account type: OCI<br>
+    Fill OCI Credentials<br>
+    <b>Validate</b>
+    <b>Save</b>
 
 
 <h2>Bastion VM</h2>
