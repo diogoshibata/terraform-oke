@@ -1,17 +1,46 @@
-#Use OpenJDK base docker image from dockerhub and open the application port on the docker container
+# The container definition we want to use for developing our app
 box:
-  id: openjdk:8
+  id: node:latest
   ports:
-    - 8080
+    - "8080"
 
-#Build our application using Maven, just as we always have
-build:
+# Defining the dev pipeline
+dev:
   steps:
-    - install-packages:
-        packages: maven
+    - npm-install
+    - internal/watch:
+        code: node app.js
+        reload: true
+
+# Build definition
+build:
+  # The steps that will be executed on build
+  steps:
     - script:
-        name: maven build
-        code: mvn clean assembly:assembly
+        code: export NODE_ENV='testing'
+    # A step that executes `npm install` command
+    - npm-install
+    # A step that executes `npm test` command
+    - npm-test
+
+    # A custom script step, name value is used in the UI
+    # and the code value contains the command that get executed
+    - script:
+        name: echo nodejs information
+        code: |
+          echo "node version $(node -v) running"
+          echo "npm version $(npm -v) running"
+
+    # Docker image, and push to OCIR.
+    - internal/docker-push:
+            entrypoint: bin/get_ip
+            cmd: 0.0.0.0 8080
+            working-dir: $WERCKER_ROOT
+            tag: $WERCKER_GIT_COMMIT
+            ports: "8080"
+            username: $DOCKER_USERNAME
+            password: $DOCKER_PASSWORD
+            repository: $DOCKER_REPO
 
 #Push the docker image with our built and tested application to the Oracle Container Registry
 push-release:
@@ -28,13 +57,9 @@ push-release:
 
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
 deploy-to-cluster:
-  box:
-      id: alpine
-      cmd: /bin/sh
-
+  box: node:latest
+  
   steps:
-
-  - bash-template
 
   - kubectl:
       name: delete secret
@@ -59,4 +84,6 @@ deploy-to-cluster:
       server: $KUBERNETES_MASTER
       token: $KUBERNETES_AUTH_TOKEN
       insecure-skip-tls-verify: true
-command: apply -f kubernetes.yml
+      command: apply -f kubernetes.yml
+
+

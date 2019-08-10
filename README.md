@@ -72,6 +72,8 @@ Download Client Credentials (Wallet)<br>
 		Confirm password: OracleCloud#123<br>
 		<b>Download</b><br>
 
+<u>Get the Autonomous Database OCID</u>
+
 
 <h3>Create the Bastion VM with Resource Manager</h3>
 
@@ -134,11 +136,12 @@ Commands:<br>
 	sudo su
 	git clone '<i>your git repository</i>'<br>
 	mkdir -p ~/.oci<br>
-	cp terraform-oke/userdata/oci_api_key.pem ~/.oci/oci_api_key.pem<br>
-	cp terraform-oke/userdata/config ~/.oci/config<br>
+	cp terraform-oke/ssh-keys/oci_api_key.pem ~/.oci/oci_api_key.pem<br>
+	cp terraform-oke/ssh-keys/config ~/.oci/config<br>
 	oci setup repair-file-permissions --file ~/.oci/oci_api_key.pem<br>
 	oci setup repair-file-permissions --file ~/.oci/config<br>
 	<u>Use Access Kubeconfig information</u><br>
+    kubectl version<br>
 	kubectl get nodes<br>
 	kubectl get pods<br>
 	kubectl get services<br>

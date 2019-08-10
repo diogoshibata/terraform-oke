@@ -3,7 +3,7 @@ echo '########## yum update all ###############'
 sudo yum update -y
 
 echo '########## install oci-cli and kubectl ##############'
-sudo yum install python-oci-cli kubectl git -y
+sudo yum install python-oci-cli kubectl git docker-engine  -y
 
 sudo systemctl enable ocid.service
 sudo systemctl start ocid.service
