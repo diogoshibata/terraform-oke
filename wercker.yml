@@ -1,0 +1,181 @@
+<<<<<<< HEAD
+# The container definition we want to use for developing our app
+box:
+  id: node:latest
+  ports:
+    - "8080"
+
+# Defining the dev pipeline
+dev:
+  steps:
+    - npm-install
+    - internal/watch:
+        code: node app.js
+        reload: true
+
+# Build definition
+build:
+  # The steps that will be executed on build
+  steps:
+    - script:
+        code: export NODE_ENV='testing'
+    # A step that executes `npm install` command
+    - npm-install
+    # A step that executes `npm test` command
+    - npm-test
+
+    # A custom script step, name value is used in the UI
+    # and the code value contains the command that get executed
+    - script:
+        name: echo nodejs information
+        code: |
+          echo "node version $(node -v) running"
+          echo "npm version $(npm -v) running"
+
+    # Docker image, and push to OCIR.
+    - internal/docker-push:
+            entrypoint: bin/get_ip
+            cmd: 0.0.0.0 8080
+            working-dir: $WERCKER_ROOT
+            tag: $WERCKER_GIT_COMMIT
+            ports: "8080"
+            username: $DOCKER_USERNAME
+            password: $DOCKER_PASSWORD
+            repository: $DOCKER_REPO
+
+#Push the docker image with our built and tested application to the Oracle Container Registry
+push-release:
+  steps:
+    - internal/docker-push:
+        username: $DOCKER_USERNAME
+        password: $OCI_AUTH_TOKEN
+        repository: $DOCKER_REGISTRY/$DOCKER_REPO
+        registry: https://$DOCKER_REGISTRY/v2
+        tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+        working-dir: /pipeline/source
+        ports: 8080
+        cmd: sh target/bin/start
+
+#Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
+deploy-to-cluster:
+  box: node:latest
+  
+  steps:
+
+  - kubectl:
+      name: delete secret
+      server: $KUBERNETES_MASTER
+      token: $KUBERNETES_AUTH_TOKEN
+      insecure-skip-tls-verify: true
+      command: delete secret wercker; echo delete registry secret
+
+  - kubectl:
+      name: create secret
+      server: $KUBERNETES_MASTER
+      token: $KUBERNETES_AUTH_TOKEN
+      insecure-skip-tls-verify: true
+      command: create secret docker-registry wercker --docker-server=$DOCKER_REGISTRY --docker-email=nobody@oracle.com --docker-username=$DOCKER_USERNAME --docker-password='$OCI_AUTH_TOKEN'; echo create registry secret
+
+  - script:
+      name: "Visualise Kubernetes config"
+      code: cat kubernetes.yml
+
+  - kubectl:
+      name: deploy to kubernetes
+      server: $KUBERNETES_MASTER
+      token: $KUBERNETES_AUTH_TOKEN
+      insecure-skip-tls-verify: true
+      command: apply -f kubernetes.yml
+
+
+=======
+# The container definition we want to use for developing our app
+box:
+  id: node:latest
+  ports:
+    - "8080"
+
+# Defining the dev pipeline
+dev:
+  steps:
+    - npm-install
+    - internal/watch:
+        code: node app.js
+        reload: true
+
+# Build definition
+build:
+  # The steps that will be executed on build
+  steps:
+    - script:
+        code: export NODE_ENV='testing'
+    # A step that executes `npm install` command
+    - npm-install
+    # A step that executes `npm test` command
+    - npm-test
+
+    # A custom script step, name value is used in the UI
+    # and the code value contains the command that get executed
+    - script:
+        name: echo nodejs information
+        code: |
+          echo "node version $(node -v) running"
+          echo "npm version $(npm -v) running"
+
+    # Docker image, and push to OCIR.
+    - internal/docker-push:
+            entrypoint: bin/get_ip
+            cmd: 0.0.0.0 8080
+            working-dir: $WERCKER_ROOT
+            tag: $WERCKER_GIT_COMMIT
+            ports: "8080"
+            username: $DOCKER_USERNAME
+            password: $DOCKER_PASSWORD
+            repository: $DOCKER_REPO
+
+#Push the docker image with our built and tested application to the Oracle Container Registry
+push-release:
+  steps:
+    - internal/docker-push:
+        username: $DOCKER_USERNAME
+        password: $OCI_AUTH_TOKEN
+        repository: $DOCKER_REGISTRY/$DOCKER_REPO
+        registry: https://$DOCKER_REGISTRY/v2
+        tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+        working-dir: /pipeline/source
+        ports: 8080
+        cmd: sh target/bin/start
+
+#Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
+deploy-to-cluster:
+  box: node:latest
+  
+  steps:
+
+  - kubectl:
+      name: delete secret
+      server: $KUBERNETES_MASTER
+      token: $KUBERNETES_AUTH_TOKEN
+      insecure-skip-tls-verify: true
+      command: delete secret wercker; echo delete registry secret
+
+  - kubectl:
+      name: create secret
+      server: $KUBERNETES_MASTER
+      token: $KUBERNETES_AUTH_TOKEN
+      insecure-skip-tls-verify: true
+      command: create secret docker-registry wercker --docker-server=$DOCKER_REGISTRY --docker-email=nobody@oracle.com --docker-username=$DOCKER_USERNAME --docker-password='$OCI_AUTH_TOKEN'; echo create registry secret
+
+  - script:
+      name: "Visualise Kubernetes config"
+      code: cat kubernetes.yml
+
+  - kubectl:
+      name: deploy to kubernetes
+      server: $KUBERNETES_MASTER
+      token: $KUBERNETES_AUTH_TOKEN
+      insecure-skip-tls-verify: true
+      command: apply -f kubernetes.yml
+
+
+>>>>>>> f03bef2fa1ef4d57575b4709ea47bcc289b86c98
